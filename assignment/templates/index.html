@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+            <h2>Reported Incidents: </h2>
+            {% for incident in incidents %}
+                <ol>
+                    <li><a href="">{{incident}}</a></li> 
+                </ol>
+            {% empty %}
+                <p>No incidents have been reported yet.</p>
+            {% endfor %}
+        {% else %}
+                <p>Report an Incident in the Incidents section which you can find in the sidebar.</p>
+        {% endif %}
+    {% else %}
+        <p>One can log in and report an incident and view saved incidents.</p>
+        <p>Admin can view the forms.</p>
+    {% endif %}
+{% endblock %}

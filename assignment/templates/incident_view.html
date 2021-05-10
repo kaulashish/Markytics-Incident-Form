@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="form-group">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="column">
+            {{ form.errors }}
+            {{ form.non_field_errors }}
+            {{form.as_p}}
+        </div>
+        <label for="">Reported By: </label><span> {{request.user}}</span>
+        <br>     
+        <br><br>
+        <input class="btn btn-info" type="submit" value="Save">
+        <a href="" class="btn btn-info">Save for later</a>
+        <a href="" class="btn btn-dark">Cancel</a>    
+    </form>  
+</div>
+{% endblock %}
